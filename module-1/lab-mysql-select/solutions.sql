@@ -34,10 +34,7 @@ SELECT au.au_id AS Author_ID,
 
 # CHALLENGE_3
 
-SELECT au.au_id AS Author_ID,
-    au.au_lname AS Lname, 
-    au.au_fname AS Fname, 
-    COUNT(*) AS total
+SELECT au.au_id AS Author_ID, au.au_lname AS Lname, au.au_fname AS Fname, COUNT(*) AS total, SUM(t.ytd_sales) AS qty
 	FROM titles AS t 
 	INNER JOIN sales
     ON  t.title_id = sales.title_id
@@ -45,6 +42,9 @@ SELECT au.au_id AS Author_ID,
     ON  t.title_id = tta.title_id
     INNER JOIN authors AS au
     ON tta.au_id = au.au_id
-    GROUP BY t.title ORDER BY total DESC
+    GROUP BY t.title 
+    ORDER BY qty DESC
+    LIMIT 3;
 
     # CHALLENGE_4
+
