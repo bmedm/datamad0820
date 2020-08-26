@@ -47,7 +47,7 @@ SELECT au.au_id AS Author_ID, au.au_lname AS Lname, au.au_fname AS Fname, SUM(t.
     LIMIT 3;
 
 # CHALLENGE_4
-SELECT au.au_id AS Author_ID, au.au_lname AS Lname, au.au_fname AS Fname, SUM(t.ytd_sales) AS TOTAL
+SELECT au.au_id AS Author_ID, au.au_lname AS Lname, au.au_fname AS Fname, COALESCE(NULL, SUM(t.ytd_sales),0) AS TOTAL
 	FROM titles AS t 
 	LEFT JOIN sales
     ON  t.title_id = sales.title_id
@@ -59,6 +59,7 @@ SELECT au.au_id AS Author_ID, au.au_lname AS Lname, au.au_fname AS Fname, SUM(t.
     ORDER BY sum(t.ytd_sales) DESC
 
 # BONUS
+
 
 
 
