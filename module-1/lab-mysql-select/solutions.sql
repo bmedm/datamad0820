@@ -66,18 +66,21 @@ SELECT au.au_id AS Author_ID,
 
 # BONUS
 
-SELECT au.au_id AS Author_ID, 
+SELECT Author_ID, Last_name, First_name, sum(Profit) as Profits FROM 
+(SELECT au.au_id AS Author_ID, 
     au.au_lname AS Last_name, 
     au.au_fname AS First_name,
+    t.title as title,
     round(t.price*(t.royalty/100)*(tta.royaltyper/100),2)*t.ytd_sales+round(t.advance*(tta.royaltyper/100),2) as Profit
 	FROM titles AS t 
     INNER JOIN titleauthor AS tta
     ON  t.title_id = tta.title_id
     INNER JOIN authors AS au
     ON tta.au_id = au.au_id
-    ORDER BY Profit DESC
+    ORDER BY au.au_id DESC) as Y
+    GROUP BY Author_ID, Last_name, First_name
+    ORDER BY Profits DESC
     LIMIT 3;
-
 
 
 
