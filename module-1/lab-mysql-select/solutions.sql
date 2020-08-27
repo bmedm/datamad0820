@@ -69,7 +69,7 @@ SELECT au.au_id AS Author_ID,
 SELECT au.au_id AS Author_ID, 
     au.au_lname AS Last_name, 
     au.au_fname AS First_name,
-    round(t.price*(t.royalty/100)*(tta.royaltyper/100),2)+round(t.advance*(tta.royaltyper/100),2) as Profit
+    round(t.price*(t.royalty/100)*(tta.royaltyper/100),2)*t.ytd_sales+round(t.advance*(tta.royaltyper/100),2) as Profit
 	FROM titles AS t 
     INNER JOIN titleauthor AS tta
     ON  t.title_id = tta.title_id
