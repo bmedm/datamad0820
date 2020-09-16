@@ -8,13 +8,34 @@ expects.
 The code is very long and messy. Refactor it according to what you have learned about
 code simplicity and efficiency.
 """
-
+## Nueva 
 print('Welcome to this calculator!')
 print('It can add and subtract whole numbers from zero to five')
 a = input('Please choose your first number (zero to five): ')
 b = input('What do you want to do? plus or minus: ')
 c = input('Please choose your second number (zero to five): ')
 
+a=input('Please choose your first number (zero to five): ')
+b=input('What do you want to do? plus or minus: ')
+c=input('Please choose your second number (zero to five): ')
+calc={"zero":0,"one":1,"two":2,"three":3,"four":4,"five":5,"six":6,"seven":7,"eight":8,"nine":9,"ten":10}
+calc2={0:"zero",1:"one",2:"two",3:"three",4:"four",5:"five",6:"six",7:"seven",8:"eight",9:"nine",10:"ten"}
+
+if b=='minus':
+    if calc[a]<calc[c]:
+        print(f'{a} {b} {c} equals negative {calc2[calc[c]-calc[a]]}')
+    else:
+         print(f'{a} {b} {c} equals {calc2[calc[a]-calc[c]]}')
+elif b== 'plus':
+    print(f'{a} {b} {c} equals {calc2[calc[a]+calc[c]]}')
+
+else:
+    print("I am not able to answer this question. Check your input.") 
+print("Thanks for using this calculator, goodbye :)")
+
+
+## Antigua
+'''
 if a == 'zero' and b == 'plus'  and c == 'zero':
     print("zero plus zero equals zero")
 if a == 'zero' and b == 'plus'  and c == 'one':
@@ -167,3 +188,4 @@ if (not a == 'zero' and not a == 'one' and not a == 'two' and not a == 'three' a
     print("I am not able to answer this question. Check your input.")
 
 print("Thanks for using this calculator, goodbye :)")
+'''
